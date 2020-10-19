@@ -1,5 +1,6 @@
 package cmd;
 
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 
@@ -34,11 +35,11 @@ public class Commandfilter_less_than_manufacturer implements Command {
                 }
             }
             if (counter == 0) {
-                return ("No such elements.");
+                return (Outputer.getString("NoSuchElements"));
             }
             return stringBuilder.toString();
         }catch(NumberFormatException e){
-            return ("Argument must be a number!");
+            return (Outputer.getString("ArgIsNumber"));
         }
     }
 
@@ -50,6 +51,6 @@ public class Commandfilter_less_than_manufacturer implements Command {
 
     @Override
     public String toString() {
-        return "filter_less_than_manufacturer";
+        return Outputer.getString("filter_less_than_manufacturer");
     }
 }

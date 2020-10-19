@@ -1,5 +1,6 @@
 package cmd;
 import client.UserSession;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 
 /**
@@ -23,14 +24,14 @@ public class CommandClear implements Command, Preparable {
         }
         try {
             if (args.length == 1) {
-                return ("There is no args for this command!");
+                return (Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             if (TableController.getCurrentTable().getSize() == 0) {
-                return ("Collection is already empty.");
+                return (Outputer.getString("EmptyCollection"));
             } else {
                 TableController.getCurrentTable().clear();
-                return ("Collection has been cleared.");
+                return (Outputer.getString("CollectionCleared"));
             }
         }
         return null;
@@ -43,7 +44,7 @@ public class CommandClear implements Command, Preparable {
      */
 
     public String toString(){
-        return "clear";
+        return Outputer.getString("clear");
     }
 
     @Override

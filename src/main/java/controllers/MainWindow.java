@@ -6,6 +6,7 @@ import clientserverdata.Reply;
 import cmd.Command;
 import cmd.CommandUpdate;
 import cmd.Registerable;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import consolehandler.cmdLists.StdCommandList;
 import controllers.data.FxProduct;
@@ -110,11 +111,11 @@ public class MainWindow {
         table.setEditable(true);
         table.setItems(TableController.getFxProducts());
 
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("id")));
 
-        keyCol.setCellValueFactory(new PropertyValueFactory<>("key"));
+        keyCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("key")));
 
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("name")));
         nameCol.setCellFactory(TextFieldTableCell.<FxProduct>forTableColumn());
         nameCol.setOnEditCommit((TableColumn.CellEditEvent<FxProduct, String> event) -> {
             TablePosition<FxProduct, String> pos = event.getTablePosition();
@@ -211,9 +212,9 @@ public class MainWindow {
 
         });
 
-        creationCol.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
+        creationCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("creationDate")));
 
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("price")));
         priceCol.setCellFactory(new Callback<TableColumn<FxProduct, Float>, TableCell<FxProduct, Float>>() {
             @Override
             public TableCell call(TableColumn param) {
@@ -249,12 +250,13 @@ public class MainWindow {
 
         });
 
-        unitCol.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
-        unitCol.setCellFactory(ComboBoxTableCell.forTableColumn("KILOGRAMS",
-                "CENTIMETERS",
-                "PCS",
-                "LITERS",
-                "MILLILITERS"));
+        unitCol.setCellValueFactory(new PropertyValueFactory<>(Outputer.getString("unitOfMeasure")));
+        unitCol.setCellFactory(ComboBoxTableCell.forTableColumn(
+                Outputer.getString("KILOGRAMS"),
+                Outputer.getString("CENTIMETERS"),
+                Outputer.getString("PCS"),
+                Outputer.getString("LITERS"),
+                Outputer.getString("MILLILITERS")));
         unitCol.setOnEditCommit((TableColumn.CellEditEvent<FxProduct, String> event) -> {
             TablePosition<FxProduct, String> pos = event.getTablePosition();
 
@@ -274,7 +276,7 @@ public class MainWindow {
                             return param.getValue().getManufacturer().nameProperty();
                         }
                         else {
-                            return new SimpleStringProperty("<undefined>");
+                            return new SimpleStringProperty(Outputer.getString("<undefined>"));
                         }
                     }
                 });
@@ -314,7 +316,7 @@ public class MainWindow {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<FxProduct, String> param) {
                 if (param.getValue().getOwner().getUsername() != null) {
                     return new SimpleStringProperty(param.getValue().getOwner().getUsername());
-                } else return new SimpleStringProperty("<undefined>");
+                } else return new SimpleStringProperty(Outputer.getString("<undefined>"));
             }
         });
         fullName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<FxProduct, String>, ObservableValue<String>>() {
@@ -324,7 +326,7 @@ public class MainWindow {
                     return param.getValue().getManufacturer().fullNameProperty();
                 }
                 else {
-                    return new SimpleStringProperty("<undefined>");
+                    return new SimpleStringProperty(Outputer.getString("<undefined>"));
                 }
             }
         });
@@ -368,7 +370,7 @@ public class MainWindow {
                 }
             }
         });
-        orgType.setCellFactory(ComboBoxTableCell.forTableColumn("PUBLIC","TRUST","PRIVATE_LIMITED_COMPANY"));
+        orgType.setCellFactory(ComboBoxTableCell.forTableColumn(Outputer.getString("PUBLIC"),Outputer.getString("TRUST"),Outputer.getString("PRIVATE_LIMITED_COMPANY")));
 
         orgType.setOnEditCommit((TableColumn.CellEditEvent<FxProduct, String> event) -> {
 
@@ -394,7 +396,7 @@ public class MainWindow {
                 if (param.getValue().getManufacturer() != null && param.getValue().getManufacturer().getPostalAddress() != null) {
                     return param.getValue().getManufacturer().getPostalAddress().streetProperty();
                 } else {
-                    return new SimpleStringProperty("undefined");
+                    return new SimpleStringProperty(Outputer.getString("undefined"));
                 }
             }
         });
@@ -621,9 +623,9 @@ public class MainWindow {
             }
         });
 
-        ObservableList<String> commands = FXCollections.observableArrayList("help","insert", "remove_key",
-                "clear", "execute_script", "exit", "filter_less_than_manufacturer", "replace_if_greater",
-                "info", "group_counting_by_coordinates", "show", "history","min_by_name","remove_lower", "login", "register");
+        ObservableList<String> commands = FXCollections.observableArrayList(Outputer.getString("help"),Outputer.getString("insert"), Outputer.getString("remove_key"),
+                Outputer.getString("clear"), Outputer.getString("execute_script"), Outputer.getString("exit"), Outputer.getString("filter_less_than_manufacturer"), Outputer.getString("replace_if_greater"),
+                Outputer.getString("info"), Outputer.getString("group_counting_by_coordinates"), Outputer.getString("show"), Outputer.getString("history"),Outputer.getString("min_by_name"),Outputer.getString("remove_lower"), Outputer.getString("login"), Outputer.getString("register"));
         commandInput.setItems(commands);
 
         usernameText.setText(UserSession.getLogin());

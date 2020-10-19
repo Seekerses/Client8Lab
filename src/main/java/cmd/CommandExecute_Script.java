@@ -1,5 +1,6 @@
 package cmd;
 
+import consolehandler.Outputer;
 import consolehandler.ScriptParser;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class CommandExecute_Script implements Command, Preparable{
         }
         else {
             ScriptParser.executeQuery(commands);
-            return ("Script was successfully executed");
+            return (Outputer.getString("ScriptExecuted"));
         }
     }
 
@@ -38,7 +39,7 @@ public class CommandExecute_Script implements Command, Preparable{
 
     @Override
     public String toString() {
-        return "execute_script";
+        return Outputer.getString("execute_script");
     }
 
     @Override

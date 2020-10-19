@@ -1,4 +1,5 @@
 package productdata;
+import consolehandler.Outputer;
 import controllers.data.FxOrganization;
 import exceptions.NotUniqueFullName;
 import exceptions.TooLargeFullName;
@@ -92,9 +93,9 @@ public class Organization implements Serializable {
 
     @Override
     public String toString(){
-        return ("ID : " + id + " Name: " + name
-                + " Full Name: " + fullName + " Type: " + (type == null ? "not indicated" : type.toString())
-                + " Address :" + (postalAddress == null ? "not indicated" : postalAddress.toString()));
+        return ("ID : " + id + Outputer.getString("OrgName") + name
+                + Outputer.getString("OrgFullName") + fullName + Outputer.getString("OrgType") + (type == null ? Outputer.getString("NoValue") : type.toString())
+                + Outputer.getString("OrgAddress") + (postalAddress == null ? Outputer.getString("NoValue") : postalAddress.toString()));
     }
 
     @Override

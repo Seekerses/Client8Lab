@@ -1,5 +1,6 @@
 package productdata;
 
+import consolehandler.Outputer;
 import controllers.data.FxLocation;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -32,7 +33,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString(){
-        return ("x = " + x + " y = " + y + " z = " + z);
+        return ("x = " + Outputer.getNumber(x) + " y = " + Outputer.getNumber(y) + " z = " + Outputer.getNumber(z));
     }
 
     /**
@@ -40,7 +41,7 @@ public class Location implements Serializable {
      * @return String in format for saving
      */
     String output(){
-        return x + ";" + y + ";" + z;
+        return Outputer.getNumber(x) + ";" + Outputer.getNumber(y) + ";" + Outputer.getNumber(z);
     }
 
     @Override

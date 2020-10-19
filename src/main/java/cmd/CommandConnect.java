@@ -1,6 +1,7 @@
 package cmd;
 
 import client.ClientController;
+import consolehandler.Outputer;
 
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class CommandConnect implements Command, Local{
     @Override
     public String execute(String[] args) throws IOException {
         if (args == null ||  args.length != 2){
-            return("Please invoke this command with 2 arguments (IP, port).");
+            return(Outputer.getString("ConnectWrongArgs"));
         }
         else {
             ClientController.setDestIP(args[0]);

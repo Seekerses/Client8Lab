@@ -1,5 +1,6 @@
 package cmd;
 import client.UserSession;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 
 /**
@@ -27,7 +28,7 @@ public class CommandRemove implements Command {
             return ("No such key\nAvailable keys: " + TableController.getCurrentTable().getKey());
         }else{
             TableController.getCurrentTable().remove(args[0]);
-            return ("Element has been removed.");
+            return (Outputer.getString("ElementRemoved"));
         }
     }
 
@@ -38,6 +39,6 @@ public class CommandRemove implements Command {
      */
 
     public String toString(){
-        return "remove_key";
+        return Outputer.getString("remove_key");
     }
 }

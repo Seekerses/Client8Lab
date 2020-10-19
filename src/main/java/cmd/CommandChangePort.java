@@ -1,6 +1,7 @@
 package cmd;
 
 import client.ClientController;
+import consolehandler.Outputer;
 
 import java.util.Arrays;
 
@@ -15,7 +16,7 @@ public class CommandChangePort implements Command, Local {
             return null;
         }
         else {
-            return ("Wrong arguments");
+            return (Outputer.getString( "WrongArgs"));
         }
     }
 }

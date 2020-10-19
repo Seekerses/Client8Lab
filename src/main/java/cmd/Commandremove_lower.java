@@ -1,4 +1,5 @@
 package cmd;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 
@@ -30,11 +31,11 @@ public class Commandremove_lower implements Command{
                 if (map.getValue().getId() < i) {
                     it.remove();//against ConcurrentModificationException
                     TableController.getCurrentTable().remove(map.getKey());
-                    return ("Elements with lower ID has been removed");
+                    return (Outputer.getString("LowerIdRemoved"));
                 }
             }
         }catch (NumberFormatException e){
-            return ("Argument must be a number!");
+            return (Outputer.getString("ArgIsNumber"));
         }
         return null;
     }
@@ -47,6 +48,6 @@ public class Commandremove_lower implements Command{
 
     @Override
     public String toString() {
-        return "remove_lower";
+        return Outputer.getString("remove_lower");
     }
 }

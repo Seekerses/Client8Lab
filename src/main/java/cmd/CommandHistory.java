@@ -1,4 +1,6 @@
 package cmd;
+import consolehandler.Outputer;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +24,7 @@ public class CommandHistory implements Command{
     public String execute(String[] args) {
         try {
             if (args.length == 1) {
-                return("There is no args for this command!");
+                return(Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             return String.valueOf((history.subList(Math.max(history.size() - 7, 0), history.size())));
@@ -37,6 +39,6 @@ public class CommandHistory implements Command{
      */
 
     public String toString(){
-        return "history";
+        return Outputer.getString("history");
     }
 }

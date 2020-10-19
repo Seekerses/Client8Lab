@@ -1,5 +1,6 @@
 package productdata;
 
+import consolehandler.Outputer;
 import controllers.data.FxAddress;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -28,7 +29,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString(){
-        return (street + ";" + (town == null ? "не указано": town.output()));
+        return (street + ";" + (town == null ? Outputer.getString("NoValue"): town.output()));
     }
 
     @Override

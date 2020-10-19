@@ -1,6 +1,7 @@
 package cmd;
 
 import client.UserSession;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 import productdata.ReaderProductBuilder;
@@ -47,7 +48,7 @@ public class CommandUpdate implements Command, Preparable{
         else {
             try {
                 if (args == null || args[0] == null) {
-                    return ("Please enter ID");
+                    return (Outputer.getString("EnterId"));
                 }
                 int counter = 0;
                 Iterator<Map.Entry<String, Product>> it = TableController.getCurrentTable().getSet().iterator();
@@ -60,10 +61,10 @@ public class CommandUpdate implements Command, Preparable{
                     }
                 }
                 if (counter == 0) {
-                    return ("There is no elements with that id.");
+                    return (Outputer.getString("NoSuchId"));
                 }
             } catch (NumberFormatException e) {
-                return ("Argument must be a number");
+                return (Outputer.getString("ArgIsNumber"));
             }
         }
         return "Element updated";
@@ -77,7 +78,7 @@ public class CommandUpdate implements Command, Preparable{
 
     @Override
     public String toString() {
-        return "update_id";
+        return Outputer.getString("update_id");
     }
 
     @Override

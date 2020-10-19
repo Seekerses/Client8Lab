@@ -1,5 +1,6 @@
 package cmd;
 
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 
@@ -19,7 +20,7 @@ public class Commandgroup_counting_by_coordinates implements Command {
     public String execute(String[] args) {
         try {
             if (args.length == 1) {
-                return ("There is no args for this command!");
+                return (Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             List<Product> products = new ArrayList<>(TableController.getCurrentTable().getProducts());
@@ -52,6 +53,6 @@ public class Commandgroup_counting_by_coordinates implements Command {
 
     @Override
     public String toString() {
-        return "group_counting_by_coordinates";
+        return Outputer.getString("group_counting_by_coordinates");
     }
 }

@@ -1,4 +1,5 @@
 package productdata;
+import consolehandler.Outputer;
 import controllers.data.FxCoordinates;
 import exceptions.InvalidYCoordinate;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -30,7 +31,7 @@ public class Coordinates implements Serializable {
 
     @Override
     public String toString(){
-        return (" x = " + x + " y = " + y);
+        return (" x = " + Outputer.getNumber(x) + " y = " + Outputer.getNumber(y));
     }
 
     /**
@@ -38,7 +39,7 @@ public class Coordinates implements Serializable {
      * @return String in in format for saving
      */
     public String output(){
-        return x + ";" + y;
+        return Outputer.getNumber(x) + ";" + Outputer.getNumber(y);
     }
 
     /**

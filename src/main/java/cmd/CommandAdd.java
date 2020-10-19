@@ -1,6 +1,7 @@
 package cmd;
 import client.UserSession;
 import consolehandler.Initializer;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 import productdata.ReaderProductBuilder;
@@ -8,6 +9,7 @@ import productdata.ReaderProductBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 /**
  * get name of command
@@ -46,7 +48,7 @@ public class CommandAdd implements Command, Preparable, Serializable {
         }
         else {
             TableController.getCurrentTable().put(key, product);
-            return ("Insertion complete...");
+            return (Outputer.getString("InsertionСomplete"));
         }
         return null;
     }
@@ -59,7 +61,7 @@ public class CommandAdd implements Command, Preparable, Serializable {
 
     @Override
     public String toString() {
-        return "insert";
+        return Outputer.getString("insert");
     }
 
     @Override
@@ -72,14 +74,14 @@ public class CommandAdd implements Command, Preparable, Serializable {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 try {
                     do {
-                        System.out.println(" Enter product key: ");
+                        System.out.println(Outputer.getString("Enterproductkey"));
                         key = reader.readLine();
-                        if (key == null) System.out.println("Error: null key.");
+                        if (key == null) System.out.println(Outputer.getString("ErrorNullKey"));
                     } while (key == null);
                     this.key = key;
                     this.product = ReaderProductBuilder.buildProduct(reader);
                 } catch (Exception e) {
-                    System.out.println("Key is null, please try again with valid key...");
+                    System.out.println(Outputer.getString("NullKeyException"));
                 }
             } else {
                 this.product = Initializer.build(args);

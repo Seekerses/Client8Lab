@@ -1,4 +1,5 @@
 package cmd;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 
@@ -16,7 +17,7 @@ public class Commandmin_by_name implements Command {
     public String execute(String[] args) {
         try {
             if (args.length == 1) {
-                return("There is no args for this command!");
+                return(Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             String min = "";
@@ -37,7 +38,7 @@ public class Commandmin_by_name implements Command {
             if (p != null) {
                 return (p.toString());
             } else {
-                return ("Empty table");
+                return (Outputer.getString("EmptyTable"));
             }
         }
         return null;
@@ -50,6 +51,6 @@ public class Commandmin_by_name implements Command {
      */
 
     public String toString() {
-        return "min_by_name";
+        return Outputer.getString("min_by_name");
     }
 }

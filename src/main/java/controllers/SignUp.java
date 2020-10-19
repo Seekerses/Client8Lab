@@ -58,7 +58,7 @@ public class SignUp {
             ClientController.setDestPort(Integer.parseInt(dstPort.getText()));
         }
         catch (Exception e){
-            statusCon.setText("Wrong port !");
+            statusCon.setText("WrongPort");
             statusCon.setVisible(true);
             logtext.setVisible(false);
             loginvalue.setVisible(false);
@@ -74,7 +74,7 @@ public class SignUp {
         }
 
         if(ClientController.connect()){
-            statusCon.setText("Connection stabled!");
+            statusCon.setText("ConnectionStabled");
             logtext.setVisible(true);
             loginvalue.setVisible(true);
             passwtext.setVisible(true);
@@ -88,7 +88,7 @@ public class SignUp {
 
         }
         else {
-            statusCon.setText("Connection failed!");
+            statusCon.setText("ConnectionFailed");
             logtext.setVisible(false);
             loginvalue.setVisible(false);
             passwtext.setVisible(false);
@@ -121,7 +121,7 @@ public class SignUp {
             stage.show();
         }
         else {
-            logtext.setText("Wrong.");
+            logtext.setText("Wrong");
         }
     }
 
@@ -138,7 +138,7 @@ public class SignUp {
             }
             signUpBut.getScene().getWindow().hide();
             Stage stage = new Stage();
-            stage.setTitle("Lab 7 Reg");
+            stage.setTitle("Lab7Reg");
             stage.setScene(new Scene(root));
             stage.show();
 

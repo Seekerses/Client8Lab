@@ -1,4 +1,5 @@
 package cmd;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 
 /**
@@ -15,7 +16,7 @@ public class CommandInfo implements Command {
     public String execute(String[] args) {
         try {
             if (args.length == 1) {
-                return ("There is no args for this command!");
+                return (Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             return ("Size of collection: " + TableController.getCurrentTable().getSize() + "\n"
@@ -32,6 +33,6 @@ public class CommandInfo implements Command {
      */
 
     public String toString(){
-        return "info";
+        return Outputer.getString("info");
     }
 }

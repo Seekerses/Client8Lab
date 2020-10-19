@@ -1,5 +1,6 @@
 package cmd;
 import client.UserSession;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import productdata.Product;
 import productdata.ReaderProductBuilder;
@@ -41,7 +42,7 @@ public class Commandreplace_if_greater implements Command{
                     }
                 }
             }
-            return ("Element has been replaced");
+            return (Outputer.getString("ElementReplaced"));
         }
     }
 
@@ -53,6 +54,6 @@ public class Commandreplace_if_greater implements Command{
 
     @Override
     public String toString() {
-        return "replace_if_greater";
+        return Outputer.getString("replace_if_greater");
     }
 }

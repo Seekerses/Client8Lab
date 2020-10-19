@@ -1,4 +1,5 @@
 package cmd;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 
 /**
@@ -15,11 +16,11 @@ public class CommandShow implements Command {
     public String execute(String[] args) {
         try {
             if (args.length == 1) {
-                return ("There is no args for this command!");
+                return (Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             if (TableController.getCurrentTable().getSize() == 0) {
-                return ("Collection is empty!");
+                return (Outputer.getString("ShowEmptyCollection"));
             } else {
                 return TableController.getCurrentTable().show();
             }
@@ -34,6 +35,6 @@ public class CommandShow implements Command {
      */
 
     public String toString(){
-        return "show";
+        return Outputer.getString("show");
     }
 }

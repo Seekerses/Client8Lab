@@ -1,6 +1,7 @@
 package cmd;
 
 import client.ClientController;
+import consolehandler.Outputer;
 
 import java.io.IOException;
 
@@ -16,11 +17,11 @@ public class CommandExit implements Command, Local{
     public String execute(String[] args) throws IOException {
         try {
             if (args.length == 1) {
-                System.out.println("There is no args for this command!");
+                System.out.println(Outputer.getString("ZeroArgs"));
             }
         }catch (NullPointerException e) {
             ClientController.getClientSocket().close();
-            System.out.println("Program completion...");
+            System.out.println(Outputer.getString("EndOfProgram"));
             System.exit(0);
         }
         return null;
@@ -34,6 +35,6 @@ public class CommandExit implements Command, Local{
 
     @Override
     public String toString() {
-        return "exit";
+        return Outputer.getString("exit");
     }
 }

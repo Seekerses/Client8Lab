@@ -1,5 +1,6 @@
 package productdata;
 import clientserverdata.User;
+import consolehandler.Outputer;
 import consolehandler.TableController;
 import controllers.data.FxProduct;
 import exceptions.NegativePrice;
@@ -67,7 +68,7 @@ public class Product implements Serializable {
                         (manufacturer.getPostalAddress() == null ? ";;;" : manufacturer.getPostalAddress().toString())
                         + ";" + manufacturer.getName() + ";" + manufacturer.getFullName() + ";"
                         + (manufacturer.getType() == null?"":manufacturer.getType().toString())) + ";" +
-                unitOfMeasure.toString() + ";" + creationDate.toString() + ";" + (price == null ? "":price.toString());
+                unitOfMeasure.toString() + ";" + creationDate.toString() + ";" + (price == null ? "":Outputer.getNumber(price));
     }
 
     /**
@@ -80,10 +81,10 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return ("ID : " + id + " \nProduct name: " + name + " \nCoordinates: "
-                + coordinates.toString() + " \nCreation date : " + creationDate.toString()
-                + " \nPrice : " + (price == null ? "not indicated":price.toString())+ " \nUnits of measure : "
-                + unitOfMeasure.toString() + " \nManufactured by : " + (manufacturer == null ? "not indicated" : manufacturer.toString()));
+        return ("ID : " + id + " \n" + Outputer.getString("ProductName") + name + " \n" + Outputer.getString("Coordinates")
+                + coordinates.toString() + " \n" + Outputer.getString("CreationDate") + creationDate.toString()
+                + " \n" + Outputer.getString("Price") + (price == null ? Outputer.getString("NoValue"):Outputer.getNumber(price))+ " \n" + Outputer.getString("UnitOfMeasure")
+                + unitOfMeasure.toString() + " \n" + Outputer.getString("Manufacturer") + (manufacturer == null ? Outputer.getString("NoValue") : manufacturer.toString()));
     }
 
     /**
