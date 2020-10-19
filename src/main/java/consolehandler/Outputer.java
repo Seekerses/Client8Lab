@@ -29,6 +29,6 @@ public class Outputer {
 
     public static String getDate(LocalDateTime date){
         DateFormat dfmt = DateFormat.getDateInstance(DateFormat.FULL, current);
-        return dfmt.format(date);
+        return dfmt.format(java.sql.Timestamp.valueOf(date));
     }
 }
