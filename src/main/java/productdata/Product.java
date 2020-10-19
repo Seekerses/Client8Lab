@@ -68,7 +68,7 @@ public class Product implements Serializable {
                         (manufacturer.getPostalAddress() == null ? ";;;" : manufacturer.getPostalAddress().toString())
                         + ";" + manufacturer.getName() + ";" + manufacturer.getFullName() + ";"
                         + (manufacturer.getType() == null?"":manufacturer.getType().toString())) + ";" +
-                unitOfMeasure.toString() + ";" + creationDate.toString() + ";" + (price == null ? "":Outputer.getNumber(price));
+                unitOfMeasure.toString() + ";" + Outputer.getDate(creationDate) + ";" + (price == null ? "":Outputer.getNumber(price));
     }
 
     /**
@@ -82,7 +82,7 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return ("ID : " + id + " \n" + Outputer.getString("ProductName") + name + " \n" + Outputer.getString("Coordinates")
-                + coordinates.toString() + " \n" + Outputer.getString("CreationDate") + creationDate.toString()
+                + coordinates.toString() + " \n" + Outputer.getString("CreationDate") + Outputer.getDate(creationDate)
                 + " \n" + Outputer.getString("Price") + (price == null ? Outputer.getString("NoValue"):Outputer.getNumber(price))+ " \n" + Outputer.getString("UnitOfMeasure")
                 + unitOfMeasure.toString() + " \n" + Outputer.getString("Manufacturer") + (manufacturer == null ? Outputer.getString("NoValue") : manufacturer.toString()));
     }
