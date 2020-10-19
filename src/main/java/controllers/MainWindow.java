@@ -46,6 +46,7 @@ import java.nio.ByteBuffer;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 
 public class MainWindow {
 
@@ -104,6 +105,8 @@ public class MainWindow {
 
     @FXML
     private TableColumn<FxProduct, Integer> orhID;
+
+    Locale localeRu = new Locale("ru");
 
 
     @FXML
